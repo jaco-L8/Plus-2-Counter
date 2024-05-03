@@ -1,8 +1,10 @@
 let counterValue = 0; // Initialize counter variable
+let queryName = "gcEJjU";
+
 
 // Function to insert the counter and start the intervals
 function insertCounter() {
-    const chatHeader = document.querySelector('#chat-room-header-label');
+    const chatHeader = document.querySelector(`.${queryName}`);
     if (chatHeader) {
         // Check if a chat-counter already exists and remove it
         const existingCounter = document.querySelector('#chat-counter');
@@ -48,9 +50,11 @@ function observeNewMessages(counterDiv) {
 
 
 const observer = new MutationObserver((mutationsList, observer) => {
-    if (document.querySelector('#chat-room-header-label')) {
+    if (document.querySelector(`.${queryName}`)) {
         insertCounter();
     }
 });
 
 observer.observe(document.body, { childList: true, subtree: true });
+
+
