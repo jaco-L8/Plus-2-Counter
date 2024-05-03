@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+    "name": "+2 Counter",
+    "version": "1.0",
+  
+    "description": "counts and displays +2's in a twitch chat",
+  
+    "icons": {
+      "48": "icons/border-48.png"
+    },
+  
+    "content_scripts": [
+      {
+        "matches": ["*://*.twitch.tv/*"],
+        "js": ["counter.js"],
+        "css": ["style.css"]
+      }
+    ]
+  }
+  
