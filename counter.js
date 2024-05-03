@@ -12,11 +12,10 @@ function insertCounter() {
 
         const counterDiv = document.createElement('div');
         counterDiv.setAttribute('id', 'chat-counter');
-        counterDiv.textContent = ` (${counterValue}) `; // Use counter variable
+        counterDiv.textContent = ` (${counterValue}) `;
         chatHeader.parentNode.insertBefore(counterDiv, chatHeader.nextSibling);
         // Once inserted, disconnect the observer
         observer.disconnect();
-        // Observe new messages in the chat
         observeNewMessages(counterDiv);
     }
 }
@@ -47,13 +46,11 @@ function observeNewMessages(counterDiv) {
     chatObserver.observe(chat, { childList: true });
 }
 
-// Create a MutationObserver instance to observe the chat header
+
 const observer = new MutationObserver((mutationsList, observer) => {
-    // Check if the chat-room-header-label is available in the DOM
     if (document.querySelector('#chat-room-header-label')) {
         insertCounter();
     }
 });
 
-// Start observing the body for childList changes
 observer.observe(document.body, { childList: true, subtree: true });
